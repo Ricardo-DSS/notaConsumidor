@@ -17,6 +17,7 @@ namespace NotaConsumidor
         MySqlConnection conexao;
 
         //comentário teste
+        //comentário teste
         public string CNPJ;
         public string mes;
         public byte situacao;
