@@ -14,6 +14,7 @@ namespace NotaConsumidor
 {
     public partial class telaConsultar : Form
     {
+        //teste
         MySqlConnection conexao;
 
         public string total;
