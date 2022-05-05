@@ -16,25 +16,14 @@ namespace NotaConsumidor
     {
         MySqlConnection conexao;
 
+        public string total;
+        public string atualizacao;
+        public int validacao = 0;
         //comentário teste
         //comentário teste
         public string CNPJ;
         public string mes;
         public byte situacao;
-
-        /* public int[] codigo;
-        public string[] CNPJ;
-        public string[] fornecedor;
-        public string[] dia;
-        public string[] mes;
-        public string[] ano;
-        public string[] nomeProduto;
-        public double[] precoUnitario;
-        public int[] quantidade;
-        public double[] valorTotalProduto;
-        public double[] valorTotalNota;
-        public bool[] situacao;
-        public int i; */
 
         public telaConsultar()
         {
@@ -61,7 +50,7 @@ namespace NotaConsumidor
             lsvConsultaDados.Columns.Add("quantidade", 100, HorizontalAlignment.Left);
             lsvConsultaDados.Columns.Add("valorTotalProduto", 100, HorizontalAlignment.Left);
             lsvConsultaDados.Columns.Add("valorTotalNota", 100, HorizontalAlignment.Left);
-            lsvConsultaDados.Columns.Add("situacao", 80, HorizontalAlignment.Left);
+            //lsvConsultaDados.Columns.Add("situacao", 80, HorizontalAlignment.Left);
 
             conexao = new MySqlConnection("server=localhost;DataBase=NotaConsumidor;Uid=root;password=;");
             try
@@ -104,7 +93,7 @@ namespace NotaConsumidor
                         ler.GetString(8),
                         ler.GetString(9),
                         ler.GetString(10),
-                        ler.GetString(11),
+                        //ler.GetString(11),
                     };
 
                     var linha_view = new ListViewItem(linha);
@@ -120,24 +109,12 @@ namespace NotaConsumidor
                 MessageBox.Show("Algo deu errado!\n\n" + e);
             }
 
-
-            /* codigo = new int[100];
-            CNPJ = new string[100];
-            fornecedor = new string[100];
-            dia = new string[100];
-            mes = new string[100];
-            ano = new string[100];
-            nomeProduto = new string[100];
-            precoUnitario = new double[100];
-            quantidade = new int[100];
-            valorTotalProduto = new double[100];
-            valorTotalNota = new double[100];
-            situacao = new bool[100]; */
-
         }//fim do método Preencher
 
         private void btnConsultar_Click(object sender, EventArgs e)
         {
+            validacao = 1;//variavel que habilita o funcionamento do botao "atualizar consulta"
+
             CNPJ = txtbCNPJ.Text;
             mes = Convert.ToString(cmbMes.SelectedItem);
 
@@ -151,6 +128,8 @@ namespace NotaConsumidor
             }
 
             Consultar();
+            valorTotal();
+
         }//fim do botão Consultar 
 
         private void btnVoltar_Click(object sender, EventArgs e)
@@ -159,5 +138,75 @@ namespace NotaConsumidor
             Menu mostrar = new Menu();
             mostrar.Show();
         }//fim do botão mostrar
+
+        private void btnAtualizar_Click(object sender, EventArgs e)
+        {
+            if (validacao == 1)
+            {
+
+                MessageBox.Show("Você tem certeza que deseja realizar essa operação?", "Aviso", MessageBoxButtons.YesNo);
+
+                var msg = MessageBox.Show("Você tem certeza que deseja realizar essa operação?", "Aviso", MessageBoxButtons.YesNo);
+
+                if (msg == DialogResult.Yes)
+                {
+                    CNPJ = txtbCNPJ.Text;
+                    mes = Convert.ToString(cmbMes.SelectedItem);
+
+                    if ((Convert.ToString(cmbSituacao.SelectedItem) == "Pendente"))
+                    {
+                        atualizacao = "update notaFiscal set situacao = '0' where (CNPJ = " + CNPJ + ") and (mes =" + mes +
+                                        ") and (situacao =" + situacao + ")";
+                        MySqlCommand atual = new MySqlCommand(atualizacao, conexao);
+                        atualizacao = "" + atual.ExecuteNonQuery();
+                        MessageBox.Show("Nota atualizada!");
+                    }//fim da atualização
+                }//fim da ação de atualização em caso positivo
+                if (msg == DialogResult.No)
+                {
+                    telaConsultar mostrar = new telaConsultar();
+                    mostrar.Show();
+                }//fim da ação que encerra o textbox
+            }//fim da condição necessária para atualizar o dado
+
+            validacao = 0;
+
+        }//fim do botão atualizar
+
+        private void valorTotal()//Joga a soma da coluna preço em um textBox
+        {
+            string funcao = "select SUM(valorTotalProduto) AS total FROM notafiscal where(CNPJ = " + CNPJ + ") and (mes = " + mes + ") and (situacao = " +
+                                situacao + ")";
+
+            MySqlCommand comando = new MySqlCommand(funcao,conexao);
+
+            MySqlDataReader valorTotal = comando.ExecuteReader();
+
+            while (valorTotal.Read())
+            {
+                total = Convert.ToString(valorTotal["total"]);
+            }
+
+            valorTotal.Close();
+
+            txtbTotal.Text = total;
+        }//fim do método valorTotal
+
+        private void Deletar()//deleta da base de dados TODA uma linha de acordo com o código
+        {
+
+            string funcao = "delete from notaFiscal where codigo =" + txtbDeletar.Text + "";
+
+            MySqlCommand comando = new MySqlCommand(funcao, conexao);
+
+            funcao = "" + comando.ExecuteNonQuery();
+
+            MessageBox.Show("Linha deletada com sucesso", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }//fim do método deletar linha
+
+        private void btnDeletar_Click(object sender, EventArgs e)
+        {
+            Deletar();
+        }//fim do botão deletar
     }//fim da classe
 }//fim do projeto
