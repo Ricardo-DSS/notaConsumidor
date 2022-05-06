@@ -25,3 +25,4 @@ C:\Users\ricar\source\repos\NotaConsumidor\NotaConsumidor\obj\Debug\NotaConsumid
 C:\Users\ricar\source\repos\NotaConsumidor\NotaConsumidor\obj\Debug\NotaConsumidor.csproj.CopyComplete
 C:\Users\ricar\source\repos\NotaConsumidor\NotaConsumidor\obj\Debug\NotaConsumidor.exe
 C:\Users\ricar\source\repos\NotaConsumidor\NotaConsumidor\obj\Debug\NotaConsumidor.pdb
+C:\Users\ricar\source\repos\NotaConsumidor\NotaConsumidor\obj\Debug\NotaConsumidor.criarLogin.resources

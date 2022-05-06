@@ -59,6 +59,7 @@ namespace NotaConsumidor
             // txtbUsuario
             // 
             this.txtbUsuario.Location = new System.Drawing.Point(176, 118);
+            this.txtbUsuario.MaxLength = 11;
             this.txtbUsuario.Name = "txtbUsuario";
             this.txtbUsuario.Size = new System.Drawing.Size(534, 20);
             this.txtbUsuario.TabIndex = 2;
@@ -75,6 +76,7 @@ namespace NotaConsumidor
             // txtbSenha
             // 
             this.txtbSenha.Location = new System.Drawing.Point(176, 166);
+            this.txtbSenha.MaxLength = 8;
             this.txtbSenha.Name = "txtbSenha";
             this.txtbSenha.Size = new System.Drawing.Size(534, 20);
             this.txtbSenha.TabIndex = 4;
@@ -97,6 +99,7 @@ namespace NotaConsumidor
             this.btnCriarUsuario.TabIndex = 6;
             this.btnCriarUsuario.Text = "Criar Usuário";
             this.btnCriarUsuario.UseVisualStyleBackColor = true;
+            this.btnCriarUsuario.Click += new System.EventHandler(this.btnCriarUsuario_Click);
             // 
             // telaLogin
             // 
