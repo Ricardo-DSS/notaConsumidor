@@ -20,8 +20,7 @@ namespace NotaConsumidor
         public string total;
         public string atualizacao;
         public int validacao = 0;
-        //comentário teste
-        //comentário teste
+        
         public string CNPJ;
         public string mes;
         public byte situacao;
@@ -114,23 +113,29 @@ namespace NotaConsumidor
 
         private void btnConsultar_Click(object sender, EventArgs e)
         {
-            validacao = 1;//variavel que habilita o funcionamento do botao "atualizar consulta"
-
-            CNPJ = txtbCNPJ.Text;
-            mes = Convert.ToString(cmbMes.SelectedItem);
-
-            if (Convert.ToString(cmbSituacao.SelectedItem) == "Pendente")
+            if (txtbCNPJ.Text == "" || cmbMes.Text == "" || cmbSituacao.Text == "")
             {
-                situacao = 1;
+                MessageBox.Show("Preencha todos os campos para realizar a consulta!");
             }
             else
             {
-                situacao = 0;
-            }
+                validacao = 1;//variavel que habilita o funcionamento do botao "atualizar consulta"
 
-            Consultar();
-            valorTotal();
+                CNPJ = txtbCNPJ.Text;
+                mes = Convert.ToString(cmbMes.SelectedItem);
 
+                if (Convert.ToString(cmbSituacao.SelectedItem) == "Pendente")
+                {
+                    situacao = 1;
+                }
+                else
+                {
+                    situacao = 0;
+                }
+
+                Consultar();
+                valorTotal();
+            }//fim da validação dos campos vazios
         }//fim do botão Consultar 
 
         private void btnVoltar_Click(object sender, EventArgs e)
@@ -144,7 +149,6 @@ namespace NotaConsumidor
         {
             if (validacao == 1)
             {
-
                 MessageBox.Show("Você tem certeza que deseja realizar essa operação?", "Aviso", MessageBoxButtons.YesNo);
 
                 var msg = MessageBox.Show("Você tem certeza que deseja realizar essa operação?", "Aviso", MessageBoxButtons.YesNo);
@@ -178,9 +182,7 @@ namespace NotaConsumidor
         {
             string funcao = "select SUM(valorTotalProduto) AS total FROM notafiscal where(CNPJ = " + CNPJ + ") and (mes = " + mes + ") and (situacao = " +
                                 situacao + ")";
-
             MySqlCommand comando = new MySqlCommand(funcao,conexao);
-
             MySqlDataReader valorTotal = comando.ExecuteReader();
 
             while (valorTotal.Read())
@@ -195,14 +197,20 @@ namespace NotaConsumidor
 
         private void Deletar()//deleta da base de dados TODA uma linha de acordo com o código
         {
+            if (txtbDeletar.Text == "")
+            {
+                MessageBox.Show("Preencha o campo com o código que deseja atualizar!");
+            }
+            else
+            {
+                string funcao = "delete from notaFiscal where codigo =" + txtbDeletar.Text + "";
 
-            string funcao = "delete from notaFiscal where codigo =" + txtbDeletar.Text + "";
+                MySqlCommand comando = new MySqlCommand(funcao, conexao);
 
-            MySqlCommand comando = new MySqlCommand(funcao, conexao);
+                funcao = "" + comando.ExecuteNonQuery();
 
-            funcao = "" + comando.ExecuteNonQuery();
-
-            MessageBox.Show("Linha deletada com sucesso", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Linha deletada com sucesso", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }//fim da validação de campo vazio           
         }//fim do método deletar linha
 
         private void btnDeletar_Click(object sender, EventArgs e)

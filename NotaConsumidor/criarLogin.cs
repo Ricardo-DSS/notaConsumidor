@@ -37,6 +37,34 @@ namespace NotaConsumidor
             }//fim da conexão
         }//fim do construtor
 
+
+        //NOVA ENTRADA
+        private void verificarCadastroExistente()
+        {
+            try
+            {
+                string verficarCadastro = "SELECT * FROM login WHERE(CPF ='" + CPF + "')";
+                MySqlCommand comando = new MySqlCommand(verficarCadastro, conexao);
+                MySqlDataReader ler = comando.ExecuteReader();
+
+                if (ler.HasRows)
+                {
+                    MessageBox.Show("Usuário já cadastrado no sistema! Cadastre um usuário válido");
+                }
+                else
+                {
+                    CadastroLogin();
+                }
+
+                ler.Close();
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Algo deu errado! \n\n" + e);
+            }//fim do try/catch
+        }
+
         private void CadastroLogin()
         {
             try
@@ -55,13 +83,22 @@ namespace NotaConsumidor
             }//fim do try catch
         }//fim do método cadastroLogin
 
+
+        //NOVA ENTRADA
         private void btnCadastrarUsuario_Click(object sender, EventArgs e)
         {
-            this.mtbCPF.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals; //Exclui a máscara antes de enviar ao banco
-            CPF = Convert.ToInt64(this.mtbCPF.Text);
-            CadastroLogin();
-            mtbCPF.Clear();
-        }
+            if (mtbCPF.Text == "" || txtbNome.Text == "" || txtbSenha.Text == "")
+            {
+                MessageBox.Show("Todos os campos são de preenchimento obrigatório!");
+            }
+            else
+            {
+                this.mtbCPF.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals; //Exclui a máscara antes de enviar ao banco
+                CPF = Convert.ToInt64(this.mtbCPF.Text);
+                verificarCadastroExistente();
+                mtbCPF.Clear();
+            }//fim da validação de campovazio           
+        }//fim do botão cadastrar usuário
 
         private void btnLogin_Click(object sender, EventArgs e)
         {

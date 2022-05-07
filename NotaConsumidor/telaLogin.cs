@@ -16,9 +16,24 @@ namespace NotaConsumidor
     {
         MySqlConnection conexao;
 
+        private string userName;
+
         public long usuario;
         public string senha;
         public string nome;
+        
+        //NOVA ENTRADA
+        public string ModificarUserName
+        {
+            get
+            {
+                return userName;
+            }
+            set
+            {
+                userName = value;
+            }
+        }//fim do método ModificarUserName
 
         public telaLogin()
         {
@@ -44,6 +59,8 @@ namespace NotaConsumidor
                 MySqlCommand comando = new MySqlCommand(verficarUsuario, conexao);
                 MySqlDataReader ler = comando.ExecuteReader();
 
+                //NOVA ENTRADA
+
                 if (ler.HasRows)
                 {
                     this.Visible = false;
@@ -66,10 +83,16 @@ namespace NotaConsumidor
 
         private void btnAcessar_Click(object sender, EventArgs e)
         {
-            usuario = Convert.ToInt64(txtbUsuario.Text);
-            senha = txtbSenha.Text;
-            verificarAcesso();
-        
+            if (txtbUsuario.Text == "" || txtbSenha.Text == "")
+            {
+                MessageBox.Show("Preencha todos os campos para acessar o sistema!");
+            }
+            else
+            {
+                usuario = Convert.ToInt64(txtbUsuario.Text);
+                senha = txtbSenha.Text;
+                verificarAcesso();
+            }//fim da verificação de campos vazios
         }//fim do método mudar de tela
 
         private void btnCriarUsuario_Click(object sender, EventArgs e)

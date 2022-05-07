@@ -70,27 +70,35 @@ namespace NotaConsumidor
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            CNPJ = txtbCNPJ.Text;
-            fornecedor = txtbFornecedor.Text;
-            dia = txtbDia.Text;
-            mes = txtbMes.Text;
-            ano = txtbAno.Text;
-            nomeProduto = txtbProduto.Text;
-            precoUnitario = Convert.ToDouble(txtbPreco.Text);
-            quantidade = Convert.ToInt32(txtbQtd.Text);
-            valorTotalProduto = Convert.ToDouble(txtbValorTotalProduto.Text);
-            valorTotalNota = Convert.ToDouble(txtbValorTotalNota.Text);
-
-            if (Convert.ToString(cmbStatus.SelectedItem) == "Pendente")
+            bool ok = campoVazio();
+            if (ok == true)
             {
-                situacao = 1; //coluna situacao vai receber 1 para valor que ainda será pago
+                MessageBox.Show("Todos os campos são de preenchimento obrigatório!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
-                situacao = 0; //coluna situacao vai receber 0 para valor já pago
-            }
+                CNPJ = txtbCNPJ.Text;
+                fornecedor = txtbFornecedor.Text;
+                dia = txtbDia.Text;
+                mes = txtbMes.Text;
+                ano = txtbAno.Text;
+                nomeProduto = txtbProduto.Text;
+                precoUnitario = Convert.ToDouble(txtbPreco.Text);
+                quantidade = Convert.ToInt32(txtbQtd.Text);
+                valorTotalProduto = Convert.ToDouble(txtbValorTotalProduto.Text);
+                valorTotalNota = Convert.ToDouble(txtbValorTotalNota.Text);
 
-            Inserir();
+                if (Convert.ToString(cmbStatus.SelectedItem) == "Pendente")
+                {
+                    situacao = 1; //coluna situacao vai receber 1 para valor que ainda será pago
+                }
+                else
+                {
+                    situacao = 0; //coluna situacao vai receber 0 para valor já pago
+                }
+
+                Inserir();
+            }            
         }//fim do botão cadastrar
 
 
@@ -110,5 +118,20 @@ namespace NotaConsumidor
             Menu mostrar = new Menu();
             mostrar.Show();
         }//fim do método voltar
+
+        private bool campoVazio()
+        {
+            foreach (Control item in this.Controls)
+            {
+                if (item is TextBoxBase)
+                {
+                    var txt = (TextBoxBase)item;
+                    if (String.IsNullOrEmpty(txt.Text))
+                        return true;
+                }
+            }//valida todos os textbox do forms
+
+            return false;
+        }//fim do método campoVazio
     }//fim da classe
 }//fim do projeto

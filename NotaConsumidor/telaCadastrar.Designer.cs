@@ -52,7 +52,6 @@ namespace NotaConsumidor
             this.lblStatus = new System.Windows.Forms.Label();
             this.cmbStatus = new System.Windows.Forms.ComboBox();
             this.btnCadastrar = new System.Windows.Forms.Button();
-            this.btnAdicionarItems = new System.Windows.Forms.Button();
             this.lblFornecedor = new System.Windows.Forms.Label();
             this.lblConexao = new System.Windows.Forms.Label();
             this.btnVoltar = new System.Windows.Forms.Button();
@@ -79,6 +78,7 @@ namespace NotaConsumidor
             // txtbCNPJ
             // 
             this.txtbCNPJ.Location = new System.Drawing.Point(65, 83);
+            this.txtbCNPJ.MaxLength = 14;
             this.txtbCNPJ.Name = "txtbCNPJ";
             this.txtbCNPJ.Size = new System.Drawing.Size(217, 20);
             this.txtbCNPJ.TabIndex = 2;
@@ -87,6 +87,7 @@ namespace NotaConsumidor
             // txtbFornecedor
             // 
             this.txtbFornecedor.Location = new System.Drawing.Point(92, 115);
+            this.txtbFornecedor.MaxLength = 45;
             this.txtbFornecedor.Name = "txtbFornecedor";
             this.txtbFornecedor.Size = new System.Drawing.Size(190, 20);
             this.txtbFornecedor.TabIndex = 4;
@@ -121,6 +122,7 @@ namespace NotaConsumidor
             // txtbDia
             // 
             this.txtbDia.Location = new System.Drawing.Point(479, 99);
+            this.txtbDia.MaxLength = 2;
             this.txtbDia.Name = "txtbDia";
             this.txtbDia.Size = new System.Drawing.Size(41, 20);
             this.txtbDia.TabIndex = 8;
@@ -128,6 +130,7 @@ namespace NotaConsumidor
             // txtbMes
             // 
             this.txtbMes.Location = new System.Drawing.Point(526, 99);
+            this.txtbMes.MaxLength = 2;
             this.txtbMes.Name = "txtbMes";
             this.txtbMes.Size = new System.Drawing.Size(41, 20);
             this.txtbMes.TabIndex = 9;
@@ -135,6 +138,7 @@ namespace NotaConsumidor
             // txtbAno
             // 
             this.txtbAno.Location = new System.Drawing.Point(573, 99);
+            this.txtbAno.MaxLength = 4;
             this.txtbAno.Name = "txtbAno";
             this.txtbAno.Size = new System.Drawing.Size(41, 20);
             this.txtbAno.TabIndex = 10;
@@ -151,6 +155,7 @@ namespace NotaConsumidor
             // txtbProduto
             // 
             this.txtbProduto.Location = new System.Drawing.Point(79, 194);
+            this.txtbProduto.MaxLength = 45;
             this.txtbProduto.Name = "txtbProduto";
             this.txtbProduto.Size = new System.Drawing.Size(471, 20);
             this.txtbProduto.TabIndex = 12;
@@ -167,6 +172,7 @@ namespace NotaConsumidor
             // txtbQtd
             // 
             this.txtbQtd.Location = new System.Drawing.Point(600, 194);
+            this.txtbQtd.MaxLength = 4;
             this.txtbQtd.Name = "txtbQtd";
             this.txtbQtd.Size = new System.Drawing.Size(100, 20);
             this.txtbQtd.TabIndex = 14;
@@ -250,15 +256,6 @@ namespace NotaConsumidor
             this.btnCadastrar.UseVisualStyleBackColor = true;
             this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
             // 
-            // btnAdicionarItems
-            // 
-            this.btnAdicionarItems.Location = new System.Drawing.Point(284, 358);
-            this.btnAdicionarItems.Name = "btnAdicionarItems";
-            this.btnAdicionarItems.Size = new System.Drawing.Size(165, 23);
-            this.btnAdicionarItems.TabIndex = 24;
-            this.btnAdicionarItems.Text = "Adicionar + Items a esta nota";
-            this.btnAdicionarItems.UseVisualStyleBackColor = true;
-            // 
             // lblFornecedor
             // 
             this.lblFornecedor.AutoSize = true;
@@ -271,7 +268,7 @@ namespace NotaConsumidor
             // lblConexao
             // 
             this.lblConexao.AutoSize = true;
-            this.lblConexao.Location = new System.Drawing.Point(534, 31);
+            this.lblConexao.Location = new System.Drawing.Point(476, 31);
             this.lblConexao.Name = "lblConexao";
             this.lblConexao.Size = new System.Drawing.Size(49, 13);
             this.lblConexao.TabIndex = 26;
@@ -296,7 +293,6 @@ namespace NotaConsumidor
             this.Controls.Add(this.btnVoltar);
             this.Controls.Add(this.lblConexao);
             this.Controls.Add(this.lblFornecedor);
-            this.Controls.Add(this.btnAdicionarItems);
             this.Controls.Add(this.btnCadastrar);
             this.Controls.Add(this.cmbStatus);
             this.Controls.Add(this.lblStatus);
@@ -352,7 +348,6 @@ namespace NotaConsumidor
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.ComboBox cmbStatus;
         private System.Windows.Forms.Button btnCadastrar;
-        private System.Windows.Forms.Button btnAdicionarItems;
         private System.Windows.Forms.Label lblFornecedor;
         private System.Windows.Forms.Label lblConexao;
         private System.Windows.Forms.Button btnVoltar;

@@ -30,5 +30,12 @@ namespace NotaConsumidor
             telaConsultar mostrar = new telaConsultar();
             mostrar.Show();
         }
+
+        private void btnVoltar_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            telaLogin mostrar = new telaLogin();
+            mostrar.Show();
+        }
     }//fim da classe
 }//fim do projeto
