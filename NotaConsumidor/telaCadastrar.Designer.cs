@@ -55,12 +55,17 @@ namespace NotaConsumidor
             this.lblFornecedor = new System.Windows.Forms.Label();
             this.lblConexao = new System.Windows.Forms.Label();
             this.btnVoltar = new System.Windows.Forms.Button();
+            this.picbNota = new System.Windows.Forms.PictureBox();
+            this.btnInserirImagem = new System.Windows.Forms.Button();
+            this.lblLocalFoto = new System.Windows.Forms.Label();
+            this.txtbLocalFoto = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.picbNota)).BeginInit();
             this.SuspendLayout();
             // 
             // lblCadastrar
             // 
             this.lblCadastrar.AutoSize = true;
-            this.lblCadastrar.Location = new System.Drawing.Point(355, 31);
+            this.lblCadastrar.Location = new System.Drawing.Point(28, 31);
             this.lblCadastrar.Name = "lblCadastrar";
             this.lblCadastrar.Size = new System.Drawing.Size(52, 13);
             this.lblCadastrar.TabIndex = 0;
@@ -86,7 +91,7 @@ namespace NotaConsumidor
             // 
             // txtbFornecedor
             // 
-            this.txtbFornecedor.Location = new System.Drawing.Point(92, 115);
+            this.txtbFornecedor.Location = new System.Drawing.Point(360, 83);
             this.txtbFornecedor.MaxLength = 45;
             this.txtbFornecedor.Name = "txtbFornecedor";
             this.txtbFornecedor.Size = new System.Drawing.Size(190, 20);
@@ -95,7 +100,7 @@ namespace NotaConsumidor
             // lblDia
             // 
             this.lblDia.AutoSize = true;
-            this.lblDia.Location = new System.Drawing.Point(476, 83);
+            this.lblDia.Location = new System.Drawing.Point(604, 70);
             this.lblDia.Name = "lblDia";
             this.lblDia.Size = new System.Drawing.Size(23, 13);
             this.lblDia.TabIndex = 5;
@@ -104,7 +109,7 @@ namespace NotaConsumidor
             // lblMes
             // 
             this.lblMes.AutoSize = true;
-            this.lblMes.Location = new System.Drawing.Point(523, 83);
+            this.lblMes.Location = new System.Drawing.Point(651, 70);
             this.lblMes.Name = "lblMes";
             this.lblMes.Size = new System.Drawing.Size(27, 13);
             this.lblMes.TabIndex = 6;
@@ -113,7 +118,7 @@ namespace NotaConsumidor
             // lblAno
             // 
             this.lblAno.AutoSize = true;
-            this.lblAno.Location = new System.Drawing.Point(570, 83);
+            this.lblAno.Location = new System.Drawing.Point(698, 70);
             this.lblAno.Name = "lblAno";
             this.lblAno.Size = new System.Drawing.Size(26, 13);
             this.lblAno.TabIndex = 7;
@@ -121,7 +126,7 @@ namespace NotaConsumidor
             // 
             // txtbDia
             // 
-            this.txtbDia.Location = new System.Drawing.Point(479, 99);
+            this.txtbDia.Location = new System.Drawing.Point(607, 86);
             this.txtbDia.MaxLength = 2;
             this.txtbDia.Name = "txtbDia";
             this.txtbDia.Size = new System.Drawing.Size(41, 20);
@@ -129,7 +134,7 @@ namespace NotaConsumidor
             // 
             // txtbMes
             // 
-            this.txtbMes.Location = new System.Drawing.Point(526, 99);
+            this.txtbMes.Location = new System.Drawing.Point(654, 86);
             this.txtbMes.MaxLength = 2;
             this.txtbMes.Name = "txtbMes";
             this.txtbMes.Size = new System.Drawing.Size(41, 20);
@@ -137,7 +142,7 @@ namespace NotaConsumidor
             // 
             // txtbAno
             // 
-            this.txtbAno.Location = new System.Drawing.Point(573, 99);
+            this.txtbAno.Location = new System.Drawing.Point(701, 86);
             this.txtbAno.MaxLength = 4;
             this.txtbAno.Name = "txtbAno";
             this.txtbAno.Size = new System.Drawing.Size(41, 20);
@@ -146,7 +151,7 @@ namespace NotaConsumidor
             // lblProduto
             // 
             this.lblProduto.AutoSize = true;
-            this.lblProduto.Location = new System.Drawing.Point(28, 194);
+            this.lblProduto.Location = new System.Drawing.Point(28, 128);
             this.lblProduto.Name = "lblProduto";
             this.lblProduto.Size = new System.Drawing.Size(44, 13);
             this.lblProduto.TabIndex = 11;
@@ -154,7 +159,7 @@ namespace NotaConsumidor
             // 
             // txtbProduto
             // 
-            this.txtbProduto.Location = new System.Drawing.Point(79, 194);
+            this.txtbProduto.Location = new System.Drawing.Point(79, 128);
             this.txtbProduto.MaxLength = 45;
             this.txtbProduto.Name = "txtbProduto";
             this.txtbProduto.Size = new System.Drawing.Size(471, 20);
@@ -163,7 +168,7 @@ namespace NotaConsumidor
             // lblQtd
             // 
             this.lblQtd.AutoSize = true;
-            this.lblQtd.Location = new System.Drawing.Point(570, 197);
+            this.lblQtd.Location = new System.Drawing.Point(577, 131);
             this.lblQtd.Name = "lblQtd";
             this.lblQtd.Size = new System.Drawing.Size(24, 13);
             this.lblQtd.TabIndex = 13;
@@ -171,16 +176,16 @@ namespace NotaConsumidor
             // 
             // txtbQtd
             // 
-            this.txtbQtd.Location = new System.Drawing.Point(600, 194);
+            this.txtbQtd.Location = new System.Drawing.Point(607, 128);
             this.txtbQtd.MaxLength = 4;
             this.txtbQtd.Name = "txtbQtd";
-            this.txtbQtd.Size = new System.Drawing.Size(100, 20);
+            this.txtbQtd.Size = new System.Drawing.Size(41, 20);
             this.txtbQtd.TabIndex = 14;
             // 
             // lblPrecoUnit
             // 
             this.lblPrecoUnit.AutoSize = true;
-            this.lblPrecoUnit.Location = new System.Drawing.Point(28, 239);
+            this.lblPrecoUnit.Location = new System.Drawing.Point(27, 167);
             this.lblPrecoUnit.Name = "lblPrecoUnit";
             this.lblPrecoUnit.Size = new System.Drawing.Size(74, 13);
             this.lblPrecoUnit.TabIndex = 15;
@@ -188,15 +193,15 @@ namespace NotaConsumidor
             // 
             // txtbPreco
             // 
-            this.txtbPreco.Location = new System.Drawing.Point(112, 239);
+            this.txtbPreco.Location = new System.Drawing.Point(111, 167);
             this.txtbPreco.Name = "txtbPreco";
-            this.txtbPreco.Size = new System.Drawing.Size(233, 20);
+            this.txtbPreco.Size = new System.Drawing.Size(71, 20);
             this.txtbPreco.TabIndex = 16;
             // 
             // lblValorTotal
             // 
             this.lblValorTotal.AutoSize = true;
-            this.lblValorTotal.Location = new System.Drawing.Point(405, 245);
+            this.lblValorTotal.Location = new System.Drawing.Point(220, 170);
             this.lblValorTotal.Name = "lblValorTotal";
             this.lblValorTotal.Size = new System.Drawing.Size(98, 13);
             this.lblValorTotal.TabIndex = 17;
@@ -204,15 +209,15 @@ namespace NotaConsumidor
             // 
             // txtbValorTotalProduto
             // 
-            this.txtbValorTotalProduto.Location = new System.Drawing.Point(510, 242);
+            this.txtbValorTotalProduto.Location = new System.Drawing.Point(325, 167);
             this.txtbValorTotalProduto.Name = "txtbValorTotalProduto";
-            this.txtbValorTotalProduto.Size = new System.Drawing.Size(190, 20);
+            this.txtbValorTotalProduto.Size = new System.Drawing.Size(67, 20);
             this.txtbValorTotalProduto.TabIndex = 18;
             // 
             // lblValorTotalNota
             // 
             this.lblValorTotalNota.AutoSize = true;
-            this.lblValorTotalNota.Location = new System.Drawing.Point(28, 296);
+            this.lblValorTotalNota.Location = new System.Drawing.Point(412, 170);
             this.lblValorTotalNota.Name = "lblValorTotalNota";
             this.lblValorTotalNota.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblValorTotalNota.Size = new System.Drawing.Size(84, 13);
@@ -221,15 +226,15 @@ namespace NotaConsumidor
             // 
             // txtbValorTotalNota
             // 
-            this.txtbValorTotalNota.Location = new System.Drawing.Point(118, 293);
+            this.txtbValorTotalNota.Location = new System.Drawing.Point(502, 167);
             this.txtbValorTotalNota.Name = "txtbValorTotalNota";
-            this.txtbValorTotalNota.Size = new System.Drawing.Size(226, 20);
+            this.txtbValorTotalNota.Size = new System.Drawing.Size(82, 20);
             this.txtbValorTotalNota.TabIndex = 20;
             // 
             // lblStatus
             // 
             this.lblStatus.AutoSize = true;
-            this.lblStatus.Location = new System.Drawing.Point(409, 296);
+            this.lblStatus.Location = new System.Drawing.Point(603, 170);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(40, 13);
             this.lblStatus.TabIndex = 21;
@@ -241,16 +246,16 @@ namespace NotaConsumidor
             this.cmbStatus.Items.AddRange(new object[] {
             "Pendente",
             "Pago"});
-            this.cmbStatus.Location = new System.Drawing.Point(455, 293);
+            this.cmbStatus.Location = new System.Drawing.Point(649, 167);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(139, 21);
             this.cmbStatus.TabIndex = 22;
             // 
             // btnCadastrar
             // 
-            this.btnCadastrar.Location = new System.Drawing.Point(492, 358);
+            this.btnCadastrar.Location = new System.Drawing.Point(476, 487);
             this.btnCadastrar.Name = "btnCadastrar";
-            this.btnCadastrar.Size = new System.Drawing.Size(75, 23);
+            this.btnCadastrar.Size = new System.Drawing.Size(248, 107);
             this.btnCadastrar.TabIndex = 23;
             this.btnCadastrar.Text = "Cadastrar";
             this.btnCadastrar.UseVisualStyleBackColor = true;
@@ -259,7 +264,7 @@ namespace NotaConsumidor
             // lblFornecedor
             // 
             this.lblFornecedor.AutoSize = true;
-            this.lblFornecedor.Location = new System.Drawing.Point(25, 118);
+            this.lblFornecedor.Location = new System.Drawing.Point(293, 86);
             this.lblFornecedor.Name = "lblFornecedor";
             this.lblFornecedor.Size = new System.Drawing.Size(61, 13);
             this.lblFornecedor.TabIndex = 25;
@@ -268,7 +273,7 @@ namespace NotaConsumidor
             // lblConexao
             // 
             this.lblConexao.AutoSize = true;
-            this.lblConexao.Location = new System.Drawing.Point(476, 31);
+            this.lblConexao.Location = new System.Drawing.Point(651, 19);
             this.lblConexao.Name = "lblConexao";
             this.lblConexao.Size = new System.Drawing.Size(49, 13);
             this.lblConexao.TabIndex = 26;
@@ -277,7 +282,7 @@ namespace NotaConsumidor
             // 
             // btnVoltar
             // 
-            this.btnVoltar.Location = new System.Drawing.Point(166, 358);
+            this.btnVoltar.Location = new System.Drawing.Point(12, 591);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Size = new System.Drawing.Size(75, 23);
             this.btnVoltar.TabIndex = 27;
@@ -285,11 +290,50 @@ namespace NotaConsumidor
             this.btnVoltar.UseVisualStyleBackColor = true;
             this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 
+            // picbNota
+            // 
+            this.picbNota.Location = new System.Drawing.Point(23, 217);
+            this.picbNota.Name = "picbNota";
+            this.picbNota.Size = new System.Drawing.Size(369, 333);
+            this.picbNota.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picbNota.TabIndex = 28;
+            this.picbNota.TabStop = false;
+            // 
+            // btnInserirImagem
+            // 
+            this.btnInserirImagem.Location = new System.Drawing.Point(521, 278);
+            this.btnInserirImagem.Name = "btnInserirImagem";
+            this.btnInserirImagem.Size = new System.Drawing.Size(157, 38);
+            this.btnInserirImagem.TabIndex = 29;
+            this.btnInserirImagem.Text = "Inserir imagem";
+            this.btnInserirImagem.UseVisualStyleBackColor = true;
+            this.btnInserirImagem.Click += new System.EventHandler(this.btnInserirImagem_Click);
+            // 
+            // lblLocalFoto
+            // 
+            this.lblLocalFoto.AutoSize = true;
+            this.lblLocalFoto.Location = new System.Drawing.Point(441, 236);
+            this.lblLocalFoto.Name = "lblLocalFoto";
+            this.lblLocalFoto.Size = new System.Drawing.Size(91, 13);
+            this.lblLocalFoto.TabIndex = 30;
+            this.lblLocalFoto.Text = "Local da Imagem:";
+            // 
+            // txtbLocalFoto
+            // 
+            this.txtbLocalFoto.Location = new System.Drawing.Point(444, 252);
+            this.txtbLocalFoto.Name = "txtbLocalFoto";
+            this.txtbLocalFoto.Size = new System.Drawing.Size(306, 20);
+            this.txtbLocalFoto.TabIndex = 31;
+            // 
             // telaCadastrar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 626);
+            this.Controls.Add(this.txtbLocalFoto);
+            this.Controls.Add(this.lblLocalFoto);
+            this.Controls.Add(this.btnInserirImagem);
+            this.Controls.Add(this.picbNota);
             this.Controls.Add(this.btnVoltar);
             this.Controls.Add(this.lblConexao);
             this.Controls.Add(this.lblFornecedor);
@@ -318,6 +362,7 @@ namespace NotaConsumidor
             this.Controls.Add(this.lblCadastrar);
             this.Name = "telaCadastrar";
             this.Text = "telaCadastrar";
+            ((System.ComponentModel.ISupportInitialize)(this.picbNota)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -351,5 +396,9 @@ namespace NotaConsumidor
         private System.Windows.Forms.Label lblFornecedor;
         private System.Windows.Forms.Label lblConexao;
         private System.Windows.Forms.Button btnVoltar;
+        private System.Windows.Forms.PictureBox picbNota;
+        private System.Windows.Forms.Button btnInserirImagem;
+        private System.Windows.Forms.Label lblLocalFoto;
+        private System.Windows.Forms.TextBox txtbLocalFoto;
     }
 }

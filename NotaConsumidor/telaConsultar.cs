@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,10 +21,14 @@ namespace NotaConsumidor
         public string total;
         public string atualizacao;
         public int validacao = 0;
-        
+
+        public string codigo;
         public string CNPJ;
         public string mes;
         public byte situacao;
+        public string foto;
+
+        public bool validation = false;
 
         public telaConsultar()
         {
@@ -217,5 +222,40 @@ namespace NotaConsumidor
         {
             Deletar();
         }//fim do botão deletar
+
+        //NOVA ENTRADA
+        private void btnVerNota_Click(object sender, EventArgs e)
+        {
+            codigo = txtbVerFoto.Text;
+            try
+            {
+                string query = "SELECT foto FROM notaFiscal WHERE(codigo =" + codigo + ")";
+
+                MySqlCommand comando = new MySqlCommand(query, conexao);
+
+                MySqlDataReader ler = comando.ExecuteReader();
+
+                if (ler.Read())
+                {
+                    foto = ler["foto"] + "";
+
+                    if (foto == null)
+                    {
+                        pictureNota.Image = null;
+                        MessageBox.Show("Não foi inserido a nota nessa entrada. Por favor, insira uma imagem no cadastro");
+                    }
+                    else
+                    {
+                        pictureNota.ImageLocation = foto;
+                    }
+                }
+
+                ler.Close();
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show("Algo de errado!\n\n" + erro);
+            }        
+        }//fim do botão verNota
     }//fim da classe
 }//fim do projeto

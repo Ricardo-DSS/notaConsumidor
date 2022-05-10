@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,6 +31,7 @@ namespace NotaConsumidor
         public double valorTotalProduto = 0;
         public double valorTotalNota = 0;
         public byte situacao;
+        public string imagem;
 
         public telaCadastrar()
         {
@@ -51,13 +53,15 @@ namespace NotaConsumidor
 
         public void Inserir()
         {
+            //NOVA ENTRADA
+            
             try
             {
                 dados = "('','" + CNPJ + "','" + fornecedor + "','" + dia + "','" + mes + "','" + ano + "','" + nomeProduto +
                     "','" + precoUnitario + "','" + quantidade + "','" + valorTotalProduto + "','" + valorTotalNota + "','" +
-                    situacao + "')";
+                    situacao + "','" + imagem + "')";
                 comando = "insert into notaFiscal(codigo, CNPJ, fornecedor, dia, mes, ano, nomeProduto, precoUnitario, quantidade, " +
-                    "valorTotalProduto, valorTotalNota, situacao) values" + dados;
+                    "valorTotalProduto, valorTotalNota, situacao, foto) values" + dados;
                 MySqlCommand sql = new MySqlCommand(comando, conexao);
                 comando = "" + sql.ExecuteNonQuery();
                 MessageBox.Show("Linha(s) afetada(s)!");
@@ -87,6 +91,10 @@ namespace NotaConsumidor
                 quantidade = Convert.ToInt32(txtbQtd.Text);
                 valorTotalProduto = Convert.ToDouble(txtbValorTotalProduto.Text);
                 valorTotalNota = Convert.ToDouble(txtbValorTotalNota.Text);
+
+                //NOVA ENTRADA
+                imagem = txtbLocalFoto.Text;
+                imagem = imagem.Replace("\\", "\\\\");
 
                 if (Convert.ToString(cmbStatus.SelectedItem) == "Pendente")
                 {
@@ -133,5 +141,22 @@ namespace NotaConsumidor
 
             return false;
         }//fim do método campoVazio
+
+        //NOVA ENTRADA
+        private void btnInserirImagem_Click(object sender, EventArgs e)
+        {
+            //Esssa classe abre o windows explorer para encontrar as imagens
+            OpenFileDialog dialog = new OpenFileDialog();
+            //Aqui é aplicado o filtro de busca no windows explorer
+            dialog.Filter = "JPG Files(*.jpg)|*.jpg|PNG Files(*.png)|*.PNG|AllFiles(*.*)|*.*";
+
+            //Quando o botão da caixa de diálogo "ok" do windows explorer for clicado os textboxes receberão as informações
+            if(dialog.ShowDialog() == DialogResult.OK)
+            {
+                string foto = dialog.FileName.ToString();
+                txtbLocalFoto.Text = foto;
+                picbNota.ImageLocation = foto;              
+            }
+        }
     }//fim da classe
 }//fim do projeto
